@@ -3,7 +3,7 @@ const listaDeEspera = []
 //função adicionarLista
 //urgencia e uma variavel booleana (true ou false)
 function adicionarLista(urgencia) {
-   // console.log("DEBUGANDO O ADICIONAR LISTA")
+    console.log("DEBUGANDO O ADICIONAR LISTA")
     let paciente = document.querySelector("#paciente").value //campo do formulario
     let ulLista = document.querySelector("#listaEspera") // saida com lista
     
@@ -41,14 +41,12 @@ function adicionarLista(urgencia) {
 
 //funcao anonima, armazenou a funcao anonima na constante atender
 const atender = function () {
-    let paciente = document.querySelector("#paciente").value //campo do formulario
     let ulLista = document.querySelector("#listaEspera") // saida com lista
     let nomeAtendimento = document.querySelector("#nomePessoaAtendimento") //nome do paciente em atendimento
 
     //verificar se não tem paciente no array lista de espera
     if(listaDeEspera.length == 0){
         alert("Não tem pacientes na lista de espera!!!");
-        document.querySelector("#alertAtendimento").style = "display:none"
         document.querySelector("#paciente").focus()
         return
     }
@@ -57,7 +55,7 @@ const atender = function () {
     
     //colocou no html o nome do paciente
     nomeAtendimento.innerHTML = pacienteEmAtendimento
-    //modificou o style para display block para mostrar a caixa alert verde na tela
+    //modificacao do style para display block
     document.querySelector("#alertAtendimento").style = "display:block"
    
     //variavel que armazena a lista de itens para a tela
@@ -78,10 +76,12 @@ const atender = function () {
 
 }
 
-
-
 //btn add tem um evento de click onde ele chama a funcao adicionaLista(false) esse parametro é a urgencia (nao e urgencia)
 btnAdd.addEventListener("click", () => adicionarLista(false));
 //btn urgencia tem um evento de click onde ele chama a funcao adicionaLista(true) esse parametro é a urgencia
 btnUrg.addEventListener("click", () => adicionarLista(true));
+//btnAtender tem um evento de click onde ele chama a funcao atender
 btnAtender.addEventListener("click", atender);
+
+//ocultando a div alert #alertAtendimento
+document.querySelector("#alertAtendimento").style = "display:none"
